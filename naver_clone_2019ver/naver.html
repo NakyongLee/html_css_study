@@ -17,14 +17,20 @@
           <span>해피빈</span>
         </div>
         <div id="header-search">
-          <h1>
-            <a href="https://www.naver.com">네이버</a>
-          </h1>
-          <h2>검색창</h2>
+          <a href="https://www.naver.com">
+            <h1>
+              <span>네이버</span>
+            </h1>
+          </a>
+          <!-- html이 문서이기 때문에 문서에서 두 번째로 중요한 부분이라는 것을 의미함 / 검색엔진이 읽음 -->
+          <h2 class="blind">검색창</h2>
           <fieldset>
-            <legend>검색</legend>
+            <legend class="blind">검색</legend>
             <input />
-            <button>검색</button>
+            <button>
+              <span class="blind">검색</span>
+              <span id="search-image"></span>
+            </button>
           </fieldset>
         </div>
       </div>
