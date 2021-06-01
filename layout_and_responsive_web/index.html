@@ -1,0 +1,211 @@
+<!DOCTYPE >
+<html>
+  <head>
+    <style>
+      /* Simple Reset CSS */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        color: #58666e;
+        background-color: #f0f3f4;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      h1 {
+        font-size: 1.8em;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p {
+        margin: 10px 5px;
+      }
+
+      #wrap {
+        margin-top: 60px;
+      }
+
+      header {
+        width: 100%;
+        height: 60px;
+        z-index: 2000;
+        background-color: #fff;
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
+        position: fixed;
+        top: 0;
+      }
+
+      nav {
+        float: right;
+      }
+
+      .logo {
+        display: inline-block;
+        height: 36px;
+        margin: 12px 0 12px 25px;
+      }
+
+      .logo > img {
+        height: 36px;
+      }
+
+      .nav-items > li {
+        display: inline-block;
+      }
+
+      .nav-items > li > a {
+        line-height: 60px;
+        padding: 0 30px;
+        color: rgba(0, 0, 0, 0.4);
+      }
+
+      .nav-items > li > a:hover {
+        color: rgba(0, 0, 0, 0.8);
+      }
+
+      #content-wrap:after {
+        content: '';
+        display: block;
+        clear: both;
+      }
+
+      aside {
+        position: fixed;
+        top: 60px;
+        bottom: 0;
+        width: 200px;
+
+        padding-top: 25px;
+        background-color: #333;
+      }
+
+      aside > ul {
+        width: 200px;
+      }
+
+      aside > ul > li > a {
+        display: block;
+        color: #fff;
+        padding: 10px 0 10px 20px;
+      }
+
+      aside > ul > li > a.active {
+        background-color: #4caf50;
+      }
+
+      aside > ul > li > a:hover:not(.active) {
+        background-color: #555;
+      }
+
+      aside > h1 {
+        padding: 20px 0 20px 20px;
+        color: #fff;
+      }
+      section {
+        float: right;
+        margin-left: 200px;
+      }
+
+      article {
+        margin: 10px;
+        padding: 25px;
+        background-color: white;
+      }
+
+      footer {
+        position: absolute;
+        height: 60px;
+        width: 100%;
+        padding: 0 25px;
+        line-height: 60px;
+        color: #8a8c8f;
+        border-top: 1px solid #dee5e7;
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap">
+      <header>
+        <a class="logo" href="#home">
+          <img src="https://poiemaweb.com/img/logo.png" />
+        </a>
+        <nav>
+          <ul class="nav-items">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about">About</a></li>
+          </ul>
+        </nav>
+      </header>
+      <div id="content-wrap">
+        <aside>
+          <h1>Aside</h1>
+          <ul>
+            <li><a href="#" class="active">London</a></li>
+            <li><a href="#">Paris</a></li>
+            <li><a href="#">Seoul</a></li>
+            <li><a href="#">Newyork</a></li>
+          </ul>
+        </aside>
+        <section>
+          <article id="london">
+            <h1>London</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Voluptate, voluptas, veritatis sint perferendis beatae
+              reprehenderit similique hic quo, unde cum fugiat optio autem sed
+              quam! Necessitatibus velit nisi expedita provident.
+            </p>
+          </article>
+
+          <article id="paris">
+            <h1>Paris</h1>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat
+              nesciunt veritatis repellat nihil explicabo accusamus consequatur
+              delectus rerum, neque voluptatem eveniet sequi rem laboriosam
+              culpa possimus impedit ullam exercitationem. Doloremque!
+            </p>
+          </article>
+          <article id="tokyo">
+            <h1>Tokyo</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Distinctio iure aliquid quibusdam, laudantium, rem quos ullam
+              placeat nobis animi suscipit pariatur aspernatur temporibus,
+              cupiditate ipsam doloremque architecto beatae ea dolor?
+            </p>
+          </article>
+          <article id="newyork">
+            <h1>Newyork</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci
+              ea laboriosam magni molestias ab harum? Sunt vero culpa similique
+              esse delectus. Cum aperiam dolorum laborum tempora cupiditate
+              quisquam unde eum?
+            </p>
+          </article>
+        </section>
+      </div>
+      <footer>© Copyright 2016 ungmo2</footer>
+    </div>
+  </body>
+</html>
