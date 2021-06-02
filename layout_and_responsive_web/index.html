@@ -1,12 +1,18 @@
 <!DOCTYPE >
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale:1.0" />
     <style>
       /* Simple Reset CSS */
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+      }
+      /* 푸터 고정용 */
+      html,
+      body {
+        height: 100%;
       }
 
       body {
@@ -39,6 +45,10 @@
 
       #wrap {
         margin-top: 60px;
+        /* 푸터 고정 */
+        min-height: 100%;
+        position: relative;
+        padding-bottom: 60px;
       }
 
       header {
@@ -63,6 +73,64 @@
 
       .logo > img {
         height: 36px;
+      }
+
+      .navicon {
+        cursor: pointer;
+        height: 60px;
+        padding: 28px 15px;
+        /* 헤더의 우측에 위치하여야 하므로 absolute와 위치 지정 */
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        -webkit-user-select: none; /* Chrome all / Safari all */
+        -moz-user-select: none; /* Firefox all */
+        -ms-user-select: none; /* IE 10+ */
+        user-select: none; /* Likely future */
+      }
+
+      /* 아이콘 만들기 */
+      .navicon-bar {
+        display: block;
+        width: 20px;
+        height: 3px;
+        background-color: #333;
+        /* 가상 요소의 부모 요소에 relative를 추가해 가상 요소들이 absolute로 절대 위치를 지정하게 함 */
+        position: relative;
+
+        transition: background-color 0.2s ease-out;
+      }
+
+      .navicon-bar::before,
+      .navicon-bar::after {
+        background-color: #333;
+        content: '';
+        display: block;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        transition: all 0.2s ease-out;
+      }
+
+      .navicon-bar::before {
+        top: -7px;
+      }
+      .navicon-bar::after {
+        top: 7px;
+      }
+      /* nav 펼치고 접기 */
+      .nav-toggle:checked ~ .navicon > .navicon-bar {
+        background: transparent;
+      }
+
+      .nav-toggle:checked ~ .navicon > .navicon-bar::before {
+        transform: rotate(45deg);
+        top: 0;
+      }
+      .nav-toggle:checked ~ .navicon > .navicon-bar::after {
+        transform: rotate(-45deg);
+        top: 0;
       }
 
       .nav-items > li {
@@ -122,21 +190,136 @@
         margin-left: 200px;
       }
 
-      article {
+      /* article {
         margin: 10px;
         padding: 25px;
         background-color: white;
+      } */
+
+      article {
+        width: 48.5%;
+        margin: 1%;
+        padding: 25px;
+        background-color: 25px;
+        float: left;
+      }
+
+      article:nth-of-type(2n) {
+        margin-left: 0;
+      }
+      article:nth-of-type(n + 3) {
+        margin-top: 0;
       }
 
       footer {
-        position: absolute;
+        position: absolute !important;
         height: 60px;
+        bottom: 0;
         width: 100%;
         padding: 0 25px;
         line-height: 60px;
         color: #8a8c8f;
         border-top: 1px solid #dee5e7;
         background-color: #f2f2f2;
+      }
+
+      .nav-toggle {
+        display: none;
+      }
+
+      .navicon {
+        display: none;
+      }
+      /* CSS 적용 우선 순위에 따라 나중에 선언된 스타일이 우선 적용되므로 Non Mobile First 방식인 경우 max-width가 큰 것부터 기술 */
+      @media screen and (max-width: 800px) {
+        header {
+          height: 120px;
+          text-align: center;
+        }
+
+        nav {
+          float: none;
+        }
+
+        #wrap {
+          /* margin-top 값 = header height */
+          margin-top: 120px;
+        }
+
+        aside {
+          top: 120px;
+        }
+
+        article {
+          width: inherit;
+          display: block;
+          margin: 10px;
+          float: none;
+        }
+        article:nth-of-type(2n) {
+          margin: 10px;
+        }
+        article:nth-of-type(n + 2) {
+          margin-top: 0;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        header {
+          height: 60px;
+        }
+
+        .nav-items {
+          display: none;
+        }
+
+        .navicon {
+          display: block;
+        }
+
+        #wrap {
+          margin-top: 60px;
+        }
+
+        aside {
+          top: 60px;
+        }
+
+        .nav-toggle:checked ~ .nav-items {
+          display: block;
+          width: 100%;
+          background-color: #fff;
+          box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-items > li {
+          display: block;
+        }
+
+        .nav-items > li > a {
+          line-height: 50px;
+        }
+
+        aside {
+          top: 60px;
+          position: static;
+          width: 100%;
+          padding: 5px 0;
+        }
+
+        aside > ul {
+          width: 100%;
+        }
+
+        aside > h1 {
+          padding: 5px 0 10px 20px;
+          color: #fff;
+        }
+
+        section {
+          float: none;
+          margin-left: 0;
+        }
       }
     </style>
   </head>
@@ -147,6 +330,11 @@
           <img src="https://poiemaweb.com/img/logo.png" />
         </a>
         <nav>
+          <input class="nav-toggle" id="nav-toggle" type="checkbox" />
+          <!-- for과 id값을 일치시켜 연동하면 label을 클릭해도 input checkbox 요소가 클릭됨 -->
+          <label class="navicon" for="nav-toggle"
+            ><span class="navicon-bar"></span
+          ></label>
           <ul class="nav-items">
             <li><a href="#home">Home</a></li>
             <li><a href="#news">News</a></li>
