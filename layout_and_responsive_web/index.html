@@ -44,10 +44,10 @@
       }
 
       #wrap {
-        margin-top: 60px;
+        padding-top: 60px;
         /* 푸터 고정 */
+        height: auto;
         min-height: 100%;
-        position: relative;
         padding-bottom: 60px;
       }
 
@@ -212,9 +212,10 @@
       }
 
       footer {
-        position: absolute !important;
+        position: relative;
+        transform: translateY(-100%);
+
         height: 60px;
-        bottom: 0;
         width: 100%;
         padding: 0 25px;
         line-height: 60px;
@@ -243,7 +244,7 @@
 
         #wrap {
           /* margin-top 값 = header height */
-          margin-top: 120px;
+          padding-top: 120px;
         }
 
         aside {
@@ -278,7 +279,7 @@
         }
 
         #wrap {
-          margin-top: 60px;
+          padding-top: 60px;
         }
 
         aside {
@@ -393,7 +394,7 @@
           </article>
         </section>
       </div>
-      <footer>© Copyright 2016 ungmo2</footer>
     </div>
+    <footer>© Copyright 2016 ungmo2</footer>
   </body>
 </html>
